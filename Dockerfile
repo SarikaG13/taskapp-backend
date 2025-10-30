@@ -7,6 +7,6 @@ COPY . /app
 RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
-EXPOSE 3030
+EXPOSE 8080
 
 CMD ["sh", "-c", "java -jar target/TaskApp-0.0.1-SNAPSHOT.jar"]
