@@ -38,11 +38,19 @@ public class UserServiceImpl implements UserService {
     public Response<?> signUp(UserRequest userRequest) {
         log.info("Inside signUp() for email: {}", userRequest.getEmail());
 
-        Optional<User> existingUser = userRepository.findByEmail(userRequest.getEmail());
-        if (existingUser.isPresent()) {
+        Optional<User> existingEmail = userRepository.findByEmail(userRequest.getEmail());
+        if (existingEmail.isPresent()) {
             return Response.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
                     .message("Email already registered")
+                    .build();
+        }
+
+        Optional<User> existingUsername = userRepository.findByUsername(userRequest.getUsername());
+        if (existingUsername.isPresent()) {
+            return Response.builder()
+                    .statusCode(HttpStatus.BAD_REQUEST.value())
+                    .message("Username already taken")
                     .build();
         }
 
