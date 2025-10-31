@@ -34,7 +34,7 @@ public class SecurityFilterConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/subtasks").permitAll()
                         .requestMatchers("/api/tasks/test-email").permitAll()
                         .anyRequest().authenticated()
