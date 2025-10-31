@@ -45,7 +45,10 @@ public class AuthFilter extends OncePerRequestFilter {
         log.debug("➡️ Incoming request: {} {}", request.getMethod(), path);
 
         if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
-            log.info("🛂 OPTIONS request detected, skipping AuthFilter");
+            log.info("🛂 OPTIONS request detected, sending CORS headers");
+            response.setHeader("Access-Control-Allow-Origin", "https://sarikag13.github.io");
+            response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
             response.setStatus(HttpServletResponse.SC_OK);
             return;
         }
