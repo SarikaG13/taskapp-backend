@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(
-        origins = {"http://localhost:3000"} ,
+        origins = {"https://taskapp-frontend-8x0n.onrender.com"} ,
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
         allowedHeaders = "*",
         allowCredentials = "true"

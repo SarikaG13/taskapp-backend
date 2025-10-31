@@ -24,7 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/subtasks")
 @CrossOrigin(
-        origins = {"http://localhost:3000"},
+        origins = {"https://taskapp-frontend-8x0n.onrender.com"},
         allowCredentials = "true"
 )
 @RequiredArgsConstructor

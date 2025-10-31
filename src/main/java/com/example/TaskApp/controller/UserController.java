@@ -22,7 +22,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(
         origins = {
-                "https://sarikag13.github.io"
+                "https://taskapp-frontend-8x0n.onrender.com"
         },
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS},
         allowedHeaders = "*",

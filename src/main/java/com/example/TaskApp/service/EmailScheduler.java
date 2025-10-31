@@ -21,7 +21,7 @@ public class EmailScheduler {
 
     private final List<TaskReminderStatus> lastRunStatus = new ArrayList<>();
 
-    private static final String FRONTEND_URL = "https://sarikag13.github.io";
+    private static final String FRONTEND_URL = "https://taskapp-frontend-8x0n.onrender.com";
 
     @Scheduled(cron = "0 0 9 * * *") //  Runs daily at 9:00 AM
     public void sendDueTaskReminders() {
