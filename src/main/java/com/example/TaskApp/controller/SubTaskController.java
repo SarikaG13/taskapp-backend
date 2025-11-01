@@ -77,7 +77,7 @@ public class SubTaskController {
                     .orElseThrow(() -> new NotFoundException("Task not found or unauthorized"));
 
             List<Subtask> subtasks = subtaskService.getSubtasksByTask(task);
-            return ResponseEntity.ok(subtasks);
+            return ResponseEntity.ok(Map.of("data", subtasks));
         } catch (Exception e) {
             log.error("❌ Failed to fetch subtasks for taskId {}", taskId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
