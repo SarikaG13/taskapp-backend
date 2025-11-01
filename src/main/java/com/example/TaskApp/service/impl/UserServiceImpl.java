@@ -63,12 +63,19 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userRequest.getEmail());
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
-        userRepository.save(user);
-
-        return Response.builder()
-                .statusCode(HttpStatus.OK.value())
-                .message("User registered successfully")
-                .build();
+        try {
+            userRepository.save(user);
+            return Response.builder()
+                    .statusCode(HttpStatus.OK.value())
+                    .message("User registered successfully")
+                    .build();
+        } catch (Exception e) {
+            log.error("💥 Error during user registration", e);
+            return Response.builder()
+                    .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                    .message("Registration failed: " + e.getMessage())
+                    .build();
+        }
     }
 
     @Override

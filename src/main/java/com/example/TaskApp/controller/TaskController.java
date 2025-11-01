@@ -67,7 +67,7 @@ public class TaskController {
 
     @GetMapping("/all")
     public ResponseEntity<Response<List<Task>>> getAllMyTasks(@AuthenticationPrincipal AuthUser authUser) {
-        log.info("🔍 Authenticated principal received: {}", authUser);
+        log.info("🔍 Authenticated principal: {}", authUser.getUsername());
 
         if (authUser == null) {
             log.warn("❌ AuthUser is null — rejecting request");
@@ -80,7 +80,7 @@ public class TaskController {
         }
 
         User user = authUser.getUser();
-        log.info("🧠 AuthUser.getUser(): {}", user);
+        log.info("🧠 Authenticated user email: {}", user.getEmail());
 
         if (user == null) {
             log.warn("❌ AuthUser.getUser() returned null — rejecting request");
