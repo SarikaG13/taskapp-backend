@@ -67,7 +67,31 @@ public class TaskController {
 
     @GetMapping("/all")
     public ResponseEntity<Response<List<Task>>> getAllMyTasks(@AuthenticationPrincipal AuthUser authUser) {
+        log.info("🔍 Authenticated principal received: {}", authUser);
+
+        if (authUser == null) {
+            log.warn("❌ AuthUser is null — rejecting request");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Response.<List<Task>>builder()
+                            .statusCode(401)
+                            .message("Unauthorized: No authenticated user")
+                            .data(null)
+                            .build());
+        }
+
         User user = authUser.getUser();
+        log.info("🧠 AuthUser.getUser(): {}", user);
+
+        if (user == null) {
+            log.warn("❌ AuthUser.getUser() returned null — rejecting request");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Response.<List<Task>>builder()
+                            .statusCode(401)
+                            .message("Unauthorized: No user bound to AuthUser")
+                            .data(null)
+                            .build());
+        }
+
         return ResponseEntity.ok(taskService.getAllMyTasks(user));
     }
 

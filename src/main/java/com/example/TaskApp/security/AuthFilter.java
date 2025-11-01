@@ -76,6 +76,7 @@ public class AuthFilter extends OncePerRequestFilter {
 
                 AuthUser authUser = (AuthUser) customUserDetailsService.loadUserByUsername(username);
                 log.info("👤 Loaded AuthUser: {}", authUser.getUsername());
+                log.info("🔍 AuthUser loaded: {}", authUser);
 
                 boolean valid = jwtUtils.isTokenValid(jwt, authUser);
                 log.info("✅ Token valid: {}", valid);
