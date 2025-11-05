@@ -133,7 +133,7 @@ CREATE TABLE subtasks (
 
 | Name   | Role                     |
 |--------|--------------------------|
-| **Sarika G** | Fullstack Developer & Architect |
+| Sarika G| Aspiring Fullstack Developer & Architect |
 
 ---
 
